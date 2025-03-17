@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "start": "node dist/server.js",  // Or your entry point file if it's different
+    "build": "tsc"  // If you're using TypeScript
   },
   "type": "module",
   "keywords": [],

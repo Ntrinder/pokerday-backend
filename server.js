@@ -14,7 +14,7 @@ const io = new Server(server, {
   },
 });
 
-app.use(cors({ origin: "https://pokerday.vercel.app/" }));
+app.use(cors({ origin: "https://pokerday.vercel.app" }));
 app.use(express.json());
 
 const votes = new Map();

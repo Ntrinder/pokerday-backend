@@ -10,12 +10,14 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://pokerday.vercel.app/",
+    // origin: "https://pokerday.vercel.app/",
+    origin: "*",
     methods: ["GET", "POST"],
   },
 });
 
-app.use(cors({ origin: "https://pokerday.vercel.app" }));
+// app.use(cors({ origin: "https://pokerday.vercel.app" }));
+app.use(cors());
 app.use(express.json());
 
 const votes = new Map();
@@ -64,6 +66,7 @@ io.on("connection", (socket) => {
     socket.join(roomId);
     rooms.get(roomId).add(name);
     io.to(roomId).emit('roomMembersUpdate', Array.from(rooms.get(roomId)));
+    io.to(roomId).emit("voteUpdate", votes.get(roomId));
   });
 
   /*leave room*/
